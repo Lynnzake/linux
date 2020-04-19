@@ -1,0 +1,67 @@
+ls
+    command --help OR man command
+    touch .123.txt  create hidden file
+    cd /Home/lynn/Documents 
+    cd Desktop
+    cd ..   return up level
+    mkdir -p a/b/c  create directory in layers
+    ls -a list all down the directory include hidden files
+    ls -l -h==ls -lh==ls -hl    show help via list
+    ls -l
+    ls 2*
+    ls *3.txt==ls *3*
+    ls ?2?.txt
+rm
+    rm -f name  (-f==--force)delete specified directory or file without remind
+    rm -r directory_name    delete specified directory
+    rm *3*  delete specified file
+    rm .123.txt
+    rm -r * delete all files(-r==-recursive)
+    rm -rf * delete everything,linux system included
+    rm filename
+tree
+    sudo apt-get update if you change the mirror source,you need to update
+    sudo apt install tree
+    tree
+    tree ~  show all file in tree
+    tree -d show only directory 
+cp
+    cp ~/Documents/2367.txt ./readme.txt    copy file to another directory
+    cp ~/Documents/2367.txt .   copy file without changing name
+    cp -i ~/Documents/2367.txt .   before copy file,tips whether to cover file already exists
+    cp -r a test    copy directory
+mv
+    mv test ~/Documents
+    mv a/b/c/123.txt .  move file to current directory
+    mv -i readme.txt download.txt  rename filename readme to download with warning
+    mv a demo   rename directory
+cat
+    cat linux_commands.txt  display all contents on the screen
+    cat -b linux_commands.txt number rows having contents
+    cat -n linux_commands.txt number all rows withor without contents
+    more linux_commands.txt display part of the file
+grep
+    grep cp linux_commands.txt      display rows have cp
+    grep -n cp linux_commands.txt    number the rows
+    grep -v cp linux_commands.txt   display rows without cp
+    grep -vn cp linux_commands.txt  display rows have cp and and number the rows
+    grep -i co linux.txt    ignore letter case
+    grep -in "Hello python" readme.txt  sting object with quotes
+    grep ^a readme.txt  diaplay row begin with a
+    grep B$ readme.txt  display row end with B 
+else
+    echo hello
+    echo Hello python > a  using redirectto write data into file.IF a not exists,create a .">"will cover the origin data
+    echo Hello python >>a   ">>"append data to the file
+    cat a   display content
+    ls -lh > a  write relevant info into a
+    ls -lha ~ | more     pipe comman "|" connect two linux_commands
+    ls -lh ~ | grep va
+    shutdown [options] [time]
+    shutdown now
+    shutdown -r now reboot system
+    ifconfig    query ip of the host
+    ifconfig | grep inet    display ip
+    ping 172.16.140.130
+    ping www.baidu.com
+    
