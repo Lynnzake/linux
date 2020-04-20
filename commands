@@ -1,67 +1,304 @@
-ls
-    command --help OR man command
-    touch .123.txt  create hidden file
-    cd /Home/lynn/Documents 
-    cd Desktop
-    cd ..   return up level
-    mkdir -p a/b/c  create directory in layers
-    ls -a list all down the directory include hidden files
-    ls -l -h==ls -lh==ls -hl    show help via list
+touch .123.txt  create hidden file创建文件
+mkdir -p a/b/c  create directory in layers创建目录
+波浪号“～”表示用户的家目录
+ls列表显示文件
+    command --help OR man command 查看命令细节
+    cd /Home/lynn/Documents     切换目录
+    cd Desktop  使用TAB健自动补齐命令
+    cd ..   return up level 返回上一级目录
+    ls -a list all down the directory include hidden files列出所有文集爱你，包括隐藏文件
+    ls -l -h==ls -lh==ls -hl    show help via list人性化列表显示文件信息
     ls -l
-    ls 2*
-    ls *3.txt==ls *3*
-    ls ?2?.txt
-rm
+    列出符合正则表达式的文件
+        ls 2*   
+        ls *3.txt==ls *3*
+        ls ?2?.txt
+rm删除文件
+    删除文件，不出现提示
     rm -f name  (-f==--force)delete specified directory or file without remind
+    删除指定目录
     rm -r directory_name    delete specified directory
-    rm *3*  delete specified file
-    rm .123.txt
+    删除满足正则的文件
+        rm *3*  delete specified file
+        rm .123.txt
+    删除所有文件
     rm -r * delete all files(-r==-recursive)
+    删除包括linux系统在内的所有文件
     rm -rf * delete everything,linux system included
     rm filename
-tree
-    sudo apt-get update if you change the mirror source,you need to update
-    sudo apt install tree
-    tree
-    tree ~  show all file in tree
-    tree -d show only directory 
-cp
+tree树形结构显示文件
+    sudo apt-get update     更新apt-get功能
+    sudo apt install tree   安装tree命令
+    tree                    显示树形
+    tree ~  show all file in tree   显示所有文件，包括隐藏文件
+    tree -d show only directory     只显示目录
+cp复制文件
     cp ~/Documents/2367.txt ./readme.txt    copy file to another directory
     cp ~/Documents/2367.txt .   copy file without changing name
-    cp -i ~/Documents/2367.txt .   before copy file,tips whether to cover file already exists
-    cp -r a test    copy directory
-mv
+    cp -i ~/Documents/2367.txt .   before copy file,tips whether to cover file already exists提示是否覆盖文件
+    cp -r a test    copy directory复制目录
+mv移动文件
     mv test ~/Documents
     mv a/b/c/123.txt .  move file to current directory
-    mv -i readme.txt download.txt  rename filename readme to download with warning
-    mv a demo   rename directory
-cat
+    mv -i readme.txt download.txt  rename filename readme to download with warning移动前提示信息
+    mv a demo   rename directory重命名目录
+cat查看文件内容
     cat linux_commands.txt  display all contents on the screen
-    cat -b linux_commands.txt number rows having contents
-    cat -n linux_commands.txt number all rows withor without contents
-    more linux_commands.txt display part of the file
-grep
-    grep cp linux_commands.txt      display rows have cp
-    grep -n cp linux_commands.txt    number the rows
-    grep -v cp linux_commands.txt   display rows without cp
+    cat -b linux_commands.txt number rows having contents               仅标号包含内容的行
+    cat -n linux_commands.txt number all rows with or without contents  标号所有的行，包括空行
+    more linux_commands.txt display part of the file                    显示部分内容more
+grep正则表达式匹配
+    grep cp linux_commands.txt      display rows have cp    匹配包含cp的行
+    grep -n cp linux_commands.txt    number the rows        标号所有的行并匹配包含cp的行
+    grep -v cp linux_commands.txt   display rows without cp 匹配不包含cp的行
     grep -vn cp linux_commands.txt  display rows have cp and and number the rows
-    grep -i co linux.txt    ignore letter case
+    grep -i co linux.txt    ignore letter case              无视大小写匹配指定数据
     grep -in "Hello python" readme.txt  sting object with quotes
     grep ^a readme.txt  diaplay row begin with a
     grep B$ readme.txt  display row end with B 
 else
     echo hello
-    echo Hello python > a  using redirectto write data into file.IF a not exists,create a .">"will cover the origin data
-    echo Hello python >>a   ">>"append data to the file
+    echo Hello python >a  ">"will cover the origin data重定向向指定文件写入数据并覆盖原内容
+    echo Hello python >>a   ">>"append data to the file重定向向指定文件追加数据
     cat a   display content
-    ls -lh > a  write relevant info into a
-    ls -lha ~ | more     pipe comman "|" connect two linux_commands
+    ls -lh > a  write relevant info into a  将命令结果写入文件
+    ls -lha ~ | more     pipe command "|" connect two linux_commands管道命令|连接两个命令
     ls -lh ~ | grep va
-    shutdown [options] [time]
-    shutdown now
-    shutdown -r now reboot system
-    ifconfig    query ip of the host
-    ifconfig | grep inet    display ip
-    ping 172.16.140.130
-    ping www.baidu.com
-    
+    ifconfig    query ip of the host    查看ip地址
+    ifconfig | grep inet    display ip  获取ip地址
+远程管理常用命令
+    关机/重启shutdown
+        shutdown 选项 时间
+        -r  r表示重启系统
+        不指定选项和参数，默认表示1分钟后关闭电脑
+        远程维护服务器时，最好不要关闭系统，而应该重新启动系统
+        shutdown [options] [time]
+        shutdown now
+        shutdown -r now 重启系统
+    查看或配置网卡信息ifconfig\ping
+        ifconfig 查看/配置计算机当前的网卡配置信息
+        ifconfig    query ip of the host
+        ifconfig | grep inet    display ip
+        一台计算机有可能一个物理网卡和多个虚拟网卡，在Linux中物理网卡的名字通常以ensXX表示
+        ping 172.16.140.130
+        ping www.baidu.com
+    远程登陆和复制文件ssh\scp
+        SSH
+            SSH客户端是一种使用Secure SHell(SSH)协议连接到远程计算机的软件程序
+            IP地址和端口号
+            IP地址：通过IP地址找到网络上的计算机，通过端口号找到计算机上的应用程序
+            SSH服务器的默认端口号是22，如果默认端口号，在连接的时候，可以省略
+            ssh [-p port] user@remote
+            user是在远程机器上的用户名，如果不指定默认为当前用户
+            remote是远程机器的地址，可以是IP/域名，或者是后面提到的别名
+            port是SSH SERVER监听的端口，如果不指定，默认为22
+            使用exit退出当前用户的登陆
+        SCP 
+            scp就是scure copy,是一个在linux下进行远程拷贝文件的命令
+            它的地址格式与ssh基本相同，需要注意的是，在指定端口号时使用大写的-P而不是小写的
+            #把本地当前目录下的01.py 文件复制到远程家目录下的Desktop/01.py
+            #注意“：”后面的路径如果不是绝对路径，则以用户的家目录作为参考路径
+            scp -P port 01.py user@remote:Desktop/01.py
+            #把远程家目录下的Desktop/01.py 文件复制到本地当前目录下的01.py
+            scp -P port user@remote:Desktop/01.py 01.py
+            #加上-r选项可以传送文件夹
+            scp -r demo user@remote:Desktop
+    SSH高级
+        免密登录
+            1.配置公钥
+            ssh-keygen
+            2.上传公钥到服务器
+            ssh-copy-id -p port user@remote
+            本地使用私钥对数据进行加密/解密，服务器使用公钥对数据进行加密解密
+            属于非对称加密算法：使用公钥加密的数据，需要使用私钥解密；使用私钥加密的数据，需要使用公钥解密
+        配置别名
+            ssh lynn代替一长串的连接数据，在~/.ssh/config里面添加以下内容，使用gedit file进行文本文件的编辑
+            Host lynn
+                HostName ip地址
+                User lynn
+                Port 22
+用户权限相关命令
+    用户和权限的基本概念
+        每个账号只能访问特定的系统资源
+        r 读 4,w 写 2,x excute 执行 1,- 无权限 0
+        在实际运用中，可以预先针对组设置好权限，然后将不同的用户添加到对应的组中，从而不用依次为每一个用户设置权限
+        关于ls -l命令
+            每三个为一组，第一个-rw对应拥有着权限，第二个-rw对应组权限，第三个对应其他用户权限
+            1代表硬链接数：通俗地讲，就是有多少方式，可以访问到当前目录/文件
+            -rw-r--r-- 1 lynn lynn  123 Apr 18 18:01 23.txt
+            -rw-rw-r-- 1 lynn lynn 7067 Apr 20 10:38 linux_commands.txt
+        chmod简单实用
+            chmod可以修改用户/组对文件/目录的权限
+            命令格式：chmod +/-rwx 文件名/目录名
+            以上方式会一次性修改用户/组权限
+        超级用户
+            linux系统中的root帐号通常用于系统的维护和管理，对操作系统的所有资源具有所有的访问权限
+            sudo
+                su是substitute user的缩写，表示使用另一个用户的身份
+                sudo命令用来以其他身份来执行命令，预设的身份是root
+                用户使用sudo时必须使用密码，密码有效期为5min
+    用户管理的终端命令
+        添加新用户
+            useradd -m -g 组名 新建用户名
+            -m,自动建立用户家目录；-g,指定用户所在的组，否则会建立一个和用户同名的组
+            sudo useradd -m -g dev zhangsan
+            ls -l /home     #查看是否成功创建用户
+        设置用户密码
+            sudo passwd 用户名 
+            如果是普通用户，直接用passwd可以修改自己的账户密码
+            用户信息保存在/etc/passwd文件中
+        删除用户
+            sudo userdel -r 用户名 -r选项会自动删除用户家目录
+        确认用户信息
+            cat /etc/passwd | grep 用户名 
+        查看用户信息
+            id 用户名 查看用户UID和GID信息
+            id lynn
+                uid=1000(lynn) gid=1000(lynn) groups=1000(lynn),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)
+            cat -n /etc/passwd | grep lynn
+                41	lynn:x:1000:1000:lynn,,,:/home/lynn:/bin/bash
+                /etc/passwd 存放的是用户信息，由6个：组成7类信息，分别是用户名，密码，UID，GID，用户全名，家目录，登录使用的SHELL
+                UID 用户标识 GID 组标识
+            who 查看当前所有登录的用户列表
+            whoami 查看当前登录用户的账户名
+            usermod
+                可以用来设置用户的主组/附加组（如admin,sudo组）和登录shell,命令格式如下:
+                    主组：通常在新建用户useradd时指定，在etc/passwd的第4列GID对应的值
+                    附加组：在etc/group中最后一列表示该组的用户列表，用于指定用户的附加权限
+                #修改用户的主组
+                sudo usermod -g 组 用户名
+                #修改用户的附加组
+                sudo usermod -G 组 用户名
+                #修改用户登录SHELL
+                sudo usermod -s /bin/bash 用户名
+                注意：默认使用useradd添加的用户是没有权限使用sudo以root身份执行命令的，可以使用以下命令，将用户添加到sudo附加组中
+                sudo usermod -G sudo zhangsan
+                设置了用户的附加组后，需要重新登录才能生效
+            which
+                /etc/passwd 是用于保存用户信息的文件
+                /user/bin/passwd 是用于修改用户密码的程序
+                which命令可以查看执行命令所在的位置
+                which passwd
+                which ls
+        bin和sbin
+            在linux中，绝大多数可执行文件都是保存在/bin,/sbin,/user/bin,/user/sbin中
+            /bin,(binary)是二进制执行文件目录，主要用于具体应用
+            /sbin(system binary)是系统管理员专用的二进制代码存放目录，主要用于系统管理
+            /user/bin(user commands for applications)后期安装的一些软件
+            /user/sbin(super user commands for applications)超级用户的一些管理程序
+        切换用户
+            切换用户，并且切换目录
+            su -用户名  ‘-’可以切换到用户家目录，否则保持位置不变
+            exit 退出当前登录账户
+            切换用户之后exit退出到原始用户
+            su 不接用户名，可以切换到root,但是不推荐使用，因为不安全
+            第一次su -进入root账户失败，可以先给root设置密码sudo passwd root,然后在su -即可进入
+        修改文件权限总结
+            chown 修改拥有者 格式：sudo chown 用户名 文件名|目录名
+            chgrp 递归修改组    格式：chgrp -R 组名 文件名|目录名
+            chmod 递归修改权限(wrx) 格式：chmod -R 755 文件名|目录名
+            没有-R 则仅修改指定文件，-R主要针对递归修改某一目录下的所有文件的权限
+            不同于chmod +/-rwx ,-R 755精确到为具体的拥有着/组/其他用户设置权限
+    组管理终端命令
+        创建组/删除组的终端命令都需要通过sudo执行
+        sudo groupadd galaxy 添加组
+        sudo gruopdel 组名 删除组
+        cat/etc/group 确认组的信息
+        chgrp -R 组名 文件/目录名 递归修改文件/目录的所属组
+        sudo chgrp -R dev Python学习/
+        /etc目录是专门用来保存系统配置信息的目录
+    修改权限终端命令
+系统信息相关命令
+    时间和日期
+        date 查看系统的时间
+        cal  calender查看日历，-y选项可以查看一年的日历
+    磁盘和目录空间
+        df -h  disk free 显示磁盘剩余空间
+        du -h[目录名] disk usage显示目录下的文件大小
+        -h 以人性化的方式显示文件大小
+    进程信息
+        ps aux :process status查看进程的详细状况
+            a :显示终端上的所有进程，包括其他用户的进程
+            u :显示进程的详细状态
+            x :显示没有控制终端的进程
+            ps默认只会显示当前用户通过终端启动的应用程序
+        top:动态显示运行中的进程并且排序
+            要退出top可以直接输入q
+        kill[-9] 进程代号：终止指定代号的进程，-9表示强行终止
+            使用Kill命令时，最好只终止由当前用户开启的进程，而不是终止root身份开启的进程，否则可能导致系统崩溃
+其他命令
+    查找文件
+        find [路径] -name ".py":查找指定路径下所有扩展名是.py的文件，包括子目录。路径可选，不指定表示当前目录
+        find Desktop/ -name "*1*" 查找桌面目录下所有包含1的文件包括子目录
+    软链接
+        ln -s 被链接的源文件 链接文件名：建立文件的软链接，用通俗的方式讲类似于windows下的快捷方式。
+        1.没有-s选项建立的是一个硬链接文件.两个文件占用相同大小的硬盘空间，工作中几乎不会建立文件的硬链接。
+        2.源文件要使用绝对路径。这样可以方便移动链接文件后，仍让能够正常使用
+        touch 01.py
+        mkdir -p demo/a/b
+        mv 01.py demo/a/b
+        ln -s demo/a/b/01.py 01_XIANGDUI #相对路径下的软链接
+        ln -s /home/lynn/Desktop/demo/a/b/01.py 01_juedui#绝对路径下的软链接
+        mv 01* demo
+        移动两个不同类型的软链接，再对内容进行查看，发现相对路径的文件打不开了
+    打包和压缩
+        打包tar
+            tar是linux中最常用的备份工具，没有压缩功能
+            #打包文件
+            tar -cvf 打包文件.tar 被打包文件/路径
+            #解包文件
+            tar -xvf 打包文件.tar
+            c 生成档案文件，创建打包文件；x 解开档案文件；v 列出归档解档的详细过程，显示进度；f 指定档案文件名称，f后面一定是.tar文件，所以此选项必须放最后
+            touch 01.py
+            touch 02.py
+            tar -cvf py.tar 01.py 02.py
+            mkdir tar
+            mv py.tar tar
+            cd tar
+            tar -xvf py.tar
+        压缩gzip
+            tar只负责打包文件，gzip压缩tar打包后的文件，其扩展名一般用XXX.tar.gz
+            tar中有一个选项-z可以调用gzip
+            tar -zcvf py.tar.gz *.py#可以使用正则进行文件匹配
+            tar -zxvf py.tar.gz
+            tar -zxvf py.tar.gz -C 目标路径 #解压缩到指定目录
+        压缩bzip2
+            作用同gzip,tar中-j可以调用bzip2
+    软件安装
+        apt-get apt-Advanced Packing Tool
+        #安装软件
+        sudo apt install 软件包
+        sudo apt install sl#小火车
+        sudo apt install htop#美化进程查看界面
+        #卸载软件
+        sudo apt remove 软件名
+        #更新已安装的包
+        sudo apt upgrade     
+        
+
+关于Ubuntu中Could not get lock /var/lib/dpkg/lock解决方案
+    1.找到并且杀掉所有的apt-get和apt进程
+    ps -A |grep apt
+    sudo kill -9 进程ID 9是SIGKILL的信号数 它会杀掉第一个apt进程
+    2.删除锁定文件
+    锁定的文件会阻止 Linux 系统中某些文件或者数据的访问，这个概念也存在于 Windows 或者其他的操作系统中。
+
+    一旦你运行了 apt-get 或者 apt 命令，锁定文件将会创建于 /var/lib/apt/lists/、/var/lib/dpkg/、/var/cache/apt/archives/ 中。
+
+    这有助于运行中的 apt-get 或者 apt 进程能够避免被其它需要使用相同文件的用户或者系统进程所打断。当该进程执行完毕后，锁定文件将会删除。
+
+    当你没有看到 apt-get 或者 apt 进程的情况下在上面两个不同的文件夹中看到了锁定文件，这是因为进程由于某个原因被杀掉了，因此你需要删除锁定文件来避免该错误。
+
+    首先运行下面的命令来移除 /var/lib/dpkg/ 文件夹下的锁定文件：
+    sudo rm /var/lib/dpkg/lock
+    之后像下面这样强制重新配置软件包：
+
+    $ sudo dpkg --configure -a
+
+    也可以删除 /var/lib/apt/lists/ 以及缓存文件夹下的锁定文件：
+
+    $ sudo rm /var/lib/apt/lists/lock$ sudo rm /var/cache/apt/archives/lock
+
+    接下来，更新你的软件包源列表：
+
+    $ sudo apt update或者$ sudo apt-get update
